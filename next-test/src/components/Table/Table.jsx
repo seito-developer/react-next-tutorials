@@ -6,6 +6,7 @@ import styles from './Table.module.css'
 export default function Table() {
     const [reports, setReports] = useState([]);
     useEffect(() => {
+        console.log('hi');
         async function fetchReports() {
             try {
                 const querySnapshot = await getDocs(collection(db, 'reports'));

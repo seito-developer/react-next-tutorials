@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styles from './Form.module.css'
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '@/lib/firebaseConfig';
 
 export default function Form() {
     const [name, setName] = useState('');
