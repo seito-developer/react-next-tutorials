@@ -1,0 +1,13 @@
+.Nav {
+    padding: 10px 20px;
+    text-align: right;
+}
+
+.NavLink {
+    margin: 0 10px;
+    color: #333;
+}
+
+.NavLink:hover {
+    text-decoration: underline;
+}
