@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import styles from './Nav.module.css'
 
-export default function Nav() {
+const Nav: React.FC = () => {
     return (
         <div className={styles.Nav}>
             <Link className={styles.NavLink} href="/">Home</Link>
@@ -10,3 +10,5 @@ export default function Nav() {
         </div>
     )
 }
+
+export default Nav;

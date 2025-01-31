@@ -11,7 +11,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "esModules": true,
+    "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {

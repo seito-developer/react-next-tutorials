@@ -1,14 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, FormEvent, ChangeEvent } from 'react'
 import styles from './Form.module.css'
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '@/lib/firebaseConfig';
 
-export default function Form() {
+type FormInputEvent = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
+
+interface FormData {
+    date: Date;
+    name: string;
+    work: string;
+    comment: string;
+}
+
+const Form: React.FC = () => {
     const [name, setName] = useState('');
     const [work, setWork] = useState('');
     const [comment, setComment] = useState('');
 
-    async function submitReport(e) {
+    const submitReport = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
             await addDoc(collection(db, 'reports'), {
@@ -35,7 +44,7 @@ export default function Form() {
                         id="name"
                         name="name"
                         value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
                     />
                 </div>
             </div>
@@ -49,7 +58,7 @@ export default function Form() {
                         id="work"
                         name="work"
                         value={work}
-                        onChange={(e) => setWork(e.target.value)}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setWork(e.target.value)}
                     />
                 </div>
             </div>
@@ -61,10 +70,10 @@ export default function Form() {
                         className={styles.inputField}
                         id="comment"
                         name="comment"
-                        rows="4"
-                        cols="50"
+                        rows={4}
+                        cols={50}
                         value={comment}
-                        onChange={(e) => setComment(e.target.value)}
+                        onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setComment(e.target.value)}
                     ></textarea>
                 </div>
             </div>
@@ -75,3 +84,5 @@ export default function Form() {
         </form>
     )
 }
+
+export default Form;

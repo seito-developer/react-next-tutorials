@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import Head from "next/head";
 import Nav from '../Nav/Nav';
 
-export default function Layout({ children }) {
+interface LayoutProps {
+    children: ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <>
             <Head>
@@ -16,4 +20,6 @@ export default function Layout({ children }) {
         </>
     )
 }
+
+export default Layout;
 

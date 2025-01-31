@@ -1,25 +1,34 @@
 import React, { useEffect, useState } from 'react'
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, DocumentData, QueryDocumentSnapshot, Timestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebaseConfig';
 import styles from './Table.module.css'
 
-export default function Table() {
-    const [reports, setReports] = useState([]);
+interface Report {
+    id: string;
+    date: Timestamp;
+    name: string;
+    work: string;
+    comment: string;
+}
+
+const Table: React.FC = () => {
+    const [reports, setReports] = useState<Report[]>([]);
+
     useEffect(() => {
         console.log('hi');
-        async function fetchReports() {
+        const fetchReports = async () => {
             try {
                 const querySnapshot = await getDocs(collection(db, 'reports'));
-                const data = [];
-                querySnapshot.forEach((doc) => {
-                    data.push({ id: doc.id, ...doc.data() });
+                const data: Report[] = [];
+                querySnapshot.forEach((doc: QueryDocumentSnapshot<DocumentData>) => {
+                    data.push({ id: doc.id, ...doc.data() } as Report);
                 });
                 setReports(data);
                 console.log(data);
             } catch (err) {
                 console.error('Error fetching reports:', err);
             }
-        }
+        };
         fetchReports();
     }, []);
 
@@ -34,7 +43,7 @@ export default function Table() {
                 </tr>
             </thead>
             <tbody className={styles.tableBody}>
-                {reports.map(report => (
+                {reports.map((report: Report) => (
                     <tr key={report.id}>
                         <td>{new Date(report.date.seconds * 1000).toLocaleString()}</td>
                         <td>{report.name}</td>
@@ -46,3 +55,5 @@ export default function Table() {
         </table>
     )
 }
+
+export default Table;
