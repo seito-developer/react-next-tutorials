@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styles from './Button.module.css';
 
 const Button = ({ disable, type, onClick, children }) => {
