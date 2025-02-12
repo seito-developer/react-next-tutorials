@@ -1,10 +1,11 @@
+import quizData from '../data/quiz';
 import styles from './Display.module.css';
 
-const Display = ({ count }) => {
+const Display = ({ quizIndex }) => {
     
     return (
         <div className={styles.display}>
-          Count: + {count}
+          {`Q.${quizIndex + 1} ${quizData[quizIndex].question}`}
         </div>
     )
 }
