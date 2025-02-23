@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Keep existing global styles */
 body {
   font-family: "Noto Sans JP", Helvetica, arial, sans-serif;
   padding: 20px;
