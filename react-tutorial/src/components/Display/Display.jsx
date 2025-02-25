@@ -1,4 +1,4 @@
-import quizData from '../data/quiz';
+import quizData from '../../data/quiz';
 import styles from './Display.module.css';
 
 const Display = ({ quizIndex }) => {
