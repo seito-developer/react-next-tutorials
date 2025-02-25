@@ -12,7 +12,7 @@ function Quiz() {
 
   const handleButton = (e) => {
     // 判定
-    if(e.currentTarget.value === quizData[quizIndex].answerIndex){
+    if(Number(e.currentTarget.value) === quizData[quizIndex].answerIndex){
       setCorrectNum(correctNum + 1)
     }
     
