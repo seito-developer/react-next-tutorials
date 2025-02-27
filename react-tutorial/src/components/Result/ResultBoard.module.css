@@ -1,0 +1,12 @@
+
+.resultBoard {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.resultBoardHighlight {
+    font-weight: bold;
+    font-size: 30px;
+}

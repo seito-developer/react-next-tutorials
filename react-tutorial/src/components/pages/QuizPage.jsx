@@ -2,13 +2,14 @@ import {  useState } from 'react'
 import Button from '../Button/Button'
 import Display from '../Display/Display'
 import quizData from '../../data/quiz'
-import Result from '../Result/Result'
-
-function Quiz() {
+import { useNavigate, useRoutes } from 'react-router-dom'
+// import { Route } from 'react-router-dom';
+useRoutes
+function QuizPage() {
   const [quizIndex, setQuizIndex] = useState(0);
   const [correctNum, setCorrectNum] = useState(0)
-  const [isCompleted, setIsCompleted] = useState(false)
   const MAX_QUIZ_LEN = quizData.length
+  const navigate = useNavigate()
 
   const handleButton = (e) => {
     // 判定
@@ -20,14 +21,17 @@ function Quiz() {
     if(quizIndex < MAX_QUIZ_LEN - 1){
       setQuizIndex(quizIndex + 1)
     }
-     else {
-      setIsCompleted(true)
+    else {
+      navigate('/result', { state: {
+        quizLen: MAX_QUIZ_LEN,
+        correctNum: correctNum
+      }})
     }
   }
 
   return (
     <>
-      {isCompleted && <Result maxQuizLen={MAX_QUIZ_LEN} correctNum={correctNum} /> }
+      
       <Display quizIndex={quizIndex} />
       <br />
       {quizData[quizIndex].options.map((option, index) => {
@@ -42,4 +46,4 @@ function Quiz() {
 }
 
 
-export default Quiz
+export default QuizPage
