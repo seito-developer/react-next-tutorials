@@ -1,8 +1,8 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import HomePage from './components/pages/HomePage'
-import QuizPage from './components/pages/QuizPage'
-import ResultPage from './components/pages/ResultPage'
+import HomePage from './pages/HomePage'
+import QuizPage from './pages/QuizPage'
+import ResultPage from './pages/ResultPage'
 
 function App() {
   return (

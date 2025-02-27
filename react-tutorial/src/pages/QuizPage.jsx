@@ -1,7 +1,7 @@
 import {  useState } from 'react'
-import Button from '../Button/Button'
-import Display from '../Display/Display'
-import quizData from '../../data/quiz'
+import Button from '../components/Button/Button'
+import Display from '../components/Display/Display'
+import quizData from '../data/quiz'
 import { useNavigate, useRoutes } from 'react-router-dom'
 // import { Route } from 'react-router-dom';
 useRoutes
